@@ -9,8 +9,30 @@
   <title>Document</title>
 </head>
 <body>
+  <h1>Library</h1>
   <div id="div-books">
   </div>
   <button id="button-new-book">NEW BOOK</button>
+  <div id="div-form" class="hide">
+    <form id="form-new-book">
+      <h2>New Book Entry</h2>
+      <label for="input-title">Title</label>
+      <input id="input-title" type="text" name="title" placeholder="And There Were None...">
+
+      <label for="input-author">Author</label>
+      <input id="input-author" type="text" name="author" placeholder="Agatha Christie...">
+
+      <label for="input-publication-date">Publication Date</label>
+      <input id="input-publication-date" type="date" name="publicationDate" placeholder="11/6/1939">
+
+      <label for="input-pages">Pages</label>
+      <input id="input-pages" type="number" name="pages" placeholder="272">
+
+      <label for="input-genres">Genres</label>
+      <input id="input-genres" type="text" name="genres" placeholder="Mystery">
+
+      <button type="submit" id="button-submit-new-book">Submit</button>
+    </form>
+  </div>
 </body>
 </html>
