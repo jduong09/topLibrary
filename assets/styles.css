@@ -1,8 +1,17 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .hide {
   display: none !important;
 }
 
+h1, h2 {
+  font-weight: 700;
+}
+
 h1 {
+  font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
 }
@@ -12,13 +21,66 @@ h1 {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 .div-card {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   background-color: darkorange;
   border: 1px solid darkorange;
   box-shadow:  0 .5rem 1rem hsla(0, 0%, 0%, .15);
 }
 
-#div-form
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.div-card > span {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.ul-genres {
+  margin-bottom: 1rem;
+}
+
+.div-buttons {
+  margin: auto auto 0 auto;
+}
+
+.btn-delete {
+  background-color: white;
+  border-radius: 4px;
+}
+
+#button-new-book {
+  display: block;
+  margin: 1rem auto;
+}
+
+#div-form {
+  padding: 1rem;
+}
+
+/* #div-form */
+#form-new-book {
+  display: flex;
+  flex-direction: column;
+}
+
+#form-new-book > input {
+  width: fit-content;
+  padding: .5rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  border: 1px solid darkorange;
+  background-color: darkorange;
+  padding: .5rem;
+  width: fit-content;
+  font-weight: 700;
+}
