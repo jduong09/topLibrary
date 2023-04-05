@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
   formNewEntry.addEventListener('submit', (e) => {
     e.preventDefault();
     const formElements = formNewEntry.elements;
-    const newBook = new Book(formElements[0].value, formElements[1].value, formElements[2].value, formElements[3].value, [formElements[4].value], false);
+    const newBook = new Book(formElements[0].value, formElements[1].value, formElements[2].value, formElements[3].value, [formElements[4].value], formElements[5].checked);
     
     library.addBookToLibrary(newBook);
     library.arrangeLibrary();
