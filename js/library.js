@@ -249,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const formNewEntry = document.getElementById('form-new-book');
   const divForm = document.getElementById('div-form');
   const inputElements = document.querySelectorAll('#form-new-book > p > input');
-  const spanErrorElements = document.querySelectorAll('#form-new-book > p > span');
   const library = new Library();
 
   library.arrangeLibrary();
@@ -265,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const formElements = formNewEntry.elements;
 
     if (checkNewFormValidity(formElements)) {
-      console.log('yo');
       const newBook = new Book(formElements[0].value, formElements[1].value, formElements[2].value, formElements[3].value, [formElements[4].value], formElements[5].checked);
       library.addBookToLibrary(newBook);
       library.arrangeLibrary();
@@ -288,8 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const showError = (inputElement) => {
   const parentEle = inputElement.parentElement;
   const spanErrorElement = parentEle.children[parentEle.children.length - 1];
-  console.log(inputElement.validity);
-  console.log(inputElement);
 
   if (inputElement.validity.valueMissing) {
     spanErrorElement.innerHTML = 'Error: Input is required.';
@@ -306,10 +302,8 @@ const showError = (inputElement) => {
 }
 
 const checkNewFormValidity = (formElements) => {
-  console.log(formElements);
   for (let i = 0; i < 5; i++) {
     const inputElement = formElements[i];
-    console.log(inputElement.validity);
     if (!inputElement.validity.valid) {
       showError(inputElement);
       return false;
