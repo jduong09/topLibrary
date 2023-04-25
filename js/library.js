@@ -248,6 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttonNewBook = document.getElementById('button-new-book');
   const formNewEntry = document.getElementById('form-new-book');
   const divForm = document.getElementById('div-form');
+  const inputElements = document.querySelectorAll('#form-new-book > p > input');
+  const spanErrorElements = document.querySelectorAll('#form-new-book > p > span');
   const library = new Library();
 
   library.arrangeLibrary();
@@ -268,4 +270,20 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInputs();
     divForm.classList.add('hide');
   });
+
+  for (let i = 0; i < inputElements.length; i++) {
+    const inputElement = inputElements[i];
+
+    inputElement.addEventListener('input', () => {
+      console.log(inputElement.validity);
+
+      if (inputElement.validity.valueMissing) {
+        spanErrorElements[i].innerHTML = 'Error: Input is required';
+        spanErrorElements[i].classList.add('active');
+      } else {
+        spanErrorElements[i].innerHTML = '';
+        spanErrorElements[i].classList.remove('active');
+      }
+    });
+  }
 });
