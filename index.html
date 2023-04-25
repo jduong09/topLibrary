@@ -22,25 +22,25 @@
       <h2>New Book Entry</h2>
       <p>
         <label for="input-title">Title:</label>
-        <input id="input-title" type="text" name="title" placeholder="And There Were None..." required>
+        <input id="input-title" type="text" name="title" maxlength="100" placeholder="And There Were None..." required>
         <span id="title-error"></span>
       </p>
 
       <p>
         <label for="input-author">Author:</label>
-        <input id="input-author" type="text" name="author" placeholder="Agatha Christie...">
+        <input id="input-author" type="text" name="author" maxlength="100" placeholder="Agatha Christie..." required>
         <span id="author-error"></span>
       </p>
       
       <p>
         <label for="input-publication-date">Publication Date:</label>
-        <input id="input-publication-date" type="date" name="publicationDate" placeholder="11/6/1939">
+        <input id="input-publication-date" type="date" name="publicationDate" placeholder="11/6/1939" required>
         <span id="publication-error"></span>
       </p>
 
       <p>
         <label for="input-pages">Pages:</label>
-        <input id="input-pages" type="number" name="pages" placeholder="272">
+        <input id="input-pages" type="number" name="pages" placeholder="272" min="1" step="1" required>
         <span id="pages-error"></span>
       </p>
 

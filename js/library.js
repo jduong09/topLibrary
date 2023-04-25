@@ -263,27 +263,57 @@ document.addEventListener('DOMContentLoaded', () => {
   formNewEntry.addEventListener('submit', (e) => {
     e.preventDefault();
     const formElements = formNewEntry.elements;
-    const newBook = new Book(formElements[0].value, formElements[1].value, formElements[2].value, formElements[3].value, [formElements[4].value], formElements[5].checked);
-    
-    library.addBookToLibrary(newBook);
-    library.arrangeLibrary();
-    clearInputs();
-    divForm.classList.add('hide');
+
+    if (checkNewFormValidity(formElements)) {
+      console.log('yo');
+      const newBook = new Book(formElements[0].value, formElements[1].value, formElements[2].value, formElements[3].value, [formElements[4].value], formElements[5].checked);
+      library.addBookToLibrary(newBook);
+      library.arrangeLibrary();
+      clearInputs();
+      divForm.classList.add('hide');
+    } else {
+      return false;
+    }
   });
 
-  for (let i = 0; i < inputElements.length; i++) {
+  for (let i = 0; i < 5; i++) {
     const inputElement = inputElements[i];
 
     inputElement.addEventListener('input', () => {
-      console.log(inputElement.validity);
-
-      if (inputElement.validity.valueMissing) {
-        spanErrorElements[i].innerHTML = 'Error: Input is required';
-        spanErrorElements[i].classList.add('active');
-      } else {
-        spanErrorElements[i].innerHTML = '';
-        spanErrorElements[i].classList.remove('active');
-      }
+      showError(inputElement);
     });
   }
 });
+
+const showError = (inputElement) => {
+  const parentEle = inputElement.parentElement;
+  const spanErrorElement = parentEle.children[parentEle.children.length - 1];
+  console.log(inputElement.validity);
+  console.log(inputElement);
+
+  if (inputElement.validity.valueMissing) {
+    spanErrorElement.innerHTML = 'Error: Input is required.';
+    spanErrorElement.classList.add('active');
+  } else if (inputElement.validity.tooLong) {
+    spanErrorElement.innerHTML = 'Error: Input is too long.';
+    spanErrorElement.classList.add('active');
+  } else if (inputElement.validity.rangeUnderflow) {
+    spanErrorElement.innerHTML = `Error: Input less than correct range. Input should be ${inputElement.min} or greater.`;
+  } else {
+    spanErrorElement.innerHTML = '';
+    spanErrorElement.classList.remove('active');
+  }
+}
+
+const checkNewFormValidity = (formElements) => {
+  console.log(formElements);
+  for (let i = 0; i < 5; i++) {
+    const inputElement = formElements[i];
+    console.log(inputElement.validity);
+    if (!inputElement.validity.valid) {
+      showError(inputElement);
+      return false;
+    }
+  }
+  return true;
+}
