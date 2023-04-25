@@ -18,25 +18,42 @@
   </div>
   <button id="button-new-book">NEW BOOK</button>
   <div id="div-form" class="hide">
-    <form id="form-new-book">
+    <form id="form-new-book" novalidate>
       <h2>New Book Entry</h2>
-      <label for="input-title">Title</label>
-      <input id="input-title" type="text" name="title" placeholder="And There Were None...">
+      <p>
+        <label for="input-title">Title:</label>
+        <input id="input-title" type="text" name="title" maxlength="100" placeholder="And There Were None..." required>
+        <span id="title-error"></span>
+      </p>
 
-      <label for="input-author">Author</label>
-      <input id="input-author" type="text" name="author" placeholder="Agatha Christie...">
+      <p>
+        <label for="input-author">Author:</label>
+        <input id="input-author" type="text" name="author" maxlength="100" placeholder="Agatha Christie..." required>
+        <span id="author-error"></span>
+      </p>
+      
+      <p>
+        <label for="input-publication-date">Publication Date:</label>
+        <input id="input-publication-date" type="date" name="publicationDate" placeholder="11/6/1939" required>
+        <span id="publication-error"></span>
+      </p>
 
-      <label for="input-publication-date">Publication Date</label>
-      <input id="input-publication-date" type="date" name="publicationDate" placeholder="11/6/1939">
+      <p>
+        <label for="input-pages">Pages:</label>
+        <input id="input-pages" type="number" name="pages" placeholder="272" min="1" step="1" required>
+        <span id="pages-error"></span>
+      </p>
 
-      <label for="input-pages">Pages</label>
-      <input id="input-pages" type="number" name="pages" placeholder="272">
+      <p>
+        <label for="input-genres">Genres:</label>
+        <input id="input-genres" type="text" name="genres" placeholder="Mystery">
+        <span id="genres-error"></span>
+      </p>
 
-      <label for="input-genres">Genres</label>
-      <input id="input-genres" type="text" name="genres" placeholder="Mystery">
-
-      <label for="input-read">Read?</label>
-      <input id="input-read" type="checkbox" name="read">
+      <p>
+        <label for="input-read">Read?:</label>
+        <input id="input-read" type="checkbox" name="read">
+      </p>
 
       <button type="submit" id="button-submit-new-book">Submit</button>
     </form>
